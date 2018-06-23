@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "KendoList";
+}
+
+<h2>KendoList</h2>
+<div class="row">
+    @using (Html.BeginForm("Search", "Laptops", FormMethod.Post))
+    {
+        <div>
+            Search by Model:
+
+        </div>
+        @(Html.Kendo()
+        .AutoComplete()
+        .Name("modelSearch")
+        .DataTextField("Model")
+        .MinLength(3)
+        .Placeholder("Enter model")
+        .DataSource(data =>
+        {
+            data.Read(read =>
+                {
+                    read.Action("GetLaptopModelData", "Laptops")
+                        .Data("onAdditionalData");
+                })
+                .ServerFiltering(true);
+        }))
+        
+        <div><br/></div>
+        @(Html.Kendo()
+        .DropDownList()
+        .Name("manufsearch")
+        .DataTextField("ManufacturerName")
+        .DataValueField("ManufacturerName")
+        .OptionLabel("All")
+        .DataSource(data =>
+        {
+            data.Read(read => read.Action("GetLaptopManufacturerData", "Laptops"));
+            data.ServerFiltering(true);
+        }))
+        <br>
+        <div>
+            <br />
+            Search by Price:
+        </div>
+        @(Html.Kendo()
+    .NumericTextBox()
+    .Name("pricesearch")
+    .Min(300)
+    .Max(3000)
+    )
+
+        <div><br /></div>
+        <input class="btn" type="submit" value="Search" />
+    }
+ 
+   </div>
+
+<br />
+<div class="row">
+
+    @(Html.Kendo()
+        .ListView<LaptopSystem.Web.Models.LaptopViewModel>()
+        .Name("laptops")
+        .TagName("div")
+        .ClientTemplateId("template")
+        .Pageable()
+        .DataSource(data =>
+        {
+            data.Read("GetLaptops", "Laptops");
+            data.ServerOperation(true);
+            data.PageSize(5);
+        }))
+
+    <script id="template" type="text/x-kendo-templ">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="#: ImageUrl #" alt="Alternate Text" />
+            </div>
+            <div class="col-md-4">
+                <h3>#: Manufacturer # #: Model#</h3>
+            </div>
+            <div class="col-md-4 pull-right">
+                <a href="/Laptops/Details/#: Id #" class="btn btn-default">Price: #: Price #</a>
+            </div>
+        </div>
+
+    </script>
+
+</div>
+
+<script>
+    function onAdditionalData() {
+        return {
+            text: $('#modelSearch').val()
+        };
+    }
+</script>

@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaptopSystem.Web", "LaptopSystem.Web\LaptopSystem.Web.csproj", "{146AE72C-DDDA-4663-9B19-27EB38C1C72C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaptopSystem.Data", "LaptopSystem.Data\LaptopSystem.Data.csproj", "{7BAB46A1-2E17-4ECE-A276-EA308323206D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LaptopSystem.Models", "LaptopSystem.Models\LaptopSystem.Models.csproj", "{8240FD81-5778-4A36-941C-18EE960BB4D7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{3D87571F-E9BA-41F9-8F58-E4B2452E044B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2018\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll = ..\..\..\..\..\..\Program Files (x86)\Progress\Telerik UI for ASP.NET MVC R2 2018\wrappers\aspnetmvc\Binaries\Mvc5\Kendo.Mvc.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{146AE72C-DDDA-4663-9B19-27EB38C1C72C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146AE72C-DDDA-4663-9B19-27EB38C1C72C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146AE72C-DDDA-4663-9B19-27EB38C1C72C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146AE72C-DDDA-4663-9B19-27EB38C1C72C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7BAB46A1-2E17-4ECE-A276-EA308323206D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7BAB46A1-2E17-4ECE-A276-EA308323206D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7BAB46A1-2E17-4ECE-A276-EA308323206D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7BAB46A1-2E17-4ECE-A276-EA308323206D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8240FD81-5778-4A36-941C-18EE960BB4D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8240FD81-5778-4A36-941C-18EE960BB4D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8240FD81-5778-4A36-941C-18EE960BB4D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8240FD81-5778-4A36-941C-18EE960BB4D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

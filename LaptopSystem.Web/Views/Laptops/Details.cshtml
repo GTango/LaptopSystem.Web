@@ -1,0 +1,78 @@
+﻿@model LaptopSystem.Web.Models.LaptopDetailsViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>@Model.ManufacturerName @Model.Model</h2>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-6">    
+        <div><strong>Monitor:</strong> @Model.MonitorSize ''</div>
+        <div><strong>RAM:</strong> @Model.RamMemorySize GB</div>
+        <div><strong>Hard Disk</strong> @Model.HardDiskSize GB</div>
+         <div><strong>Price:</strong>$@Model.Price </div>
+          </div>
+            <div class="col-md-6">
+                <img src="@Model.ImageUrl" alt="@Model.ManufacturerName" />
+            </div>
+      </div>
+     </div>
+        <div class="col-md-4 pull-right">
+          
+                <div><strong>Weight:</strong> @Model.Weight kg</div>
+        
+                <div><strong>Additional Parts:</strong> @Model.AdditionalParts</div>
+          
+                <div></div><strong>Description:</strong> @Model.Description </div>
+       </div>
+<div>
+    Votes: <span id="laptop-votes">@Model.Votes</span>
+    @if (User.Identity.IsAuthenticated && Model.UserCanVote)
+            {
+        @Ajax.ActionLink("Vote", "Vote", new { id = Model.Id }, new AjaxOptions
+           {
+               InsertionMode = InsertionMode.Replace,
+               UpdateTargetId = "laptop-votes",
+               HttpMethod = "Post",
+               OnSuccess = "hideVoteButton"
+           }, new { @id = "vote-button", @class = "btn btn-primary" })
+    }
+</div>
+
+
+
+
+
+<div id="Comments">
+    <h3>Comments:</h3>  
+@foreach (var comment in Model.Comments)
+{
+    @Html.Partial("_CommentPartial", comment)
+}
+</div> 
+
+@if (User.Identity.IsAuthenticated)
+{
+    using (Ajax.BeginForm("PostComment", new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "Comments" , OnFailure = "commentPostFailure"}))
+    {
+        @Html.Hidden("LaptopId", Model.Id)
+        @Html.TextArea("comment")
+        @Html.AntiForgeryToken()
+        <input type="submit" value="Submit comment" />
+    }
+}
+
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function commentPostFailure() {
+            alert("Error");
+        }
+
+        function hideVoteButton() {
+            $("#vote-butoon").hide();
+        }
+    </script>
+}
